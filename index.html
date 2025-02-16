@@ -1,0 +1,31 @@
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const isAppInstalled = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+        const isMobile = /Android|iPhone|iPad/i.test(navigator.userAgent);
+        
+        const showElements = [
+            'tile-cover-deK97P', 
+            'tile-feature-list-o9yw52', 
+            'tile-feature-list-uC2YRj', 
+            'tile-category-products-9jXFT4',
+            'tile-call-to-action-FnGz9b'
+        ];
+        
+        const hideElements = [
+            'tile-call-to-action-CrzPhX', 
+            'tile-announcement-bar-yPta7R',
+            'tile-category-products-mNnQAs',
+            'tile-location-BrcesR'
+        ];
+
+        showElements.forEach(id => {
+            const element = document.getElementById(id);
+            if (element) element.style.display = (isMobile && isAppInstalled) ? 'block' : 'none';
+        });
+
+        hideElements.forEach(id => {
+            const element = document.getElementById(id);
+            if (element) element.style.display = (isMobile && isAppInstalled) ? 'none' : 'block';
+        });
+    });
+</script>
